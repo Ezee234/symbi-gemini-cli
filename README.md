@@ -188,3 +188,7 @@ Apache 2.0 -- see [LICENSE](LICENSE).
 - [ThirdKey AI](https://thirdkey.ai)
 - [Claude Code Plugin](https://github.com/thirdkeyai/symbi-claude-code)
 - [Implementation Roadmap](ROADMAP.md)
+
+## Disclaimer
+
+This project is not affiliated with, endorsed by, or sponsored by Google LLC. "Gemini" and "Gemini CLI" are trademarks of Google LLC. "Symbiont" and "ThirdKey" are trademarks of ThirdKey AI.
