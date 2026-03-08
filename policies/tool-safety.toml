@@ -1,0 +1,18 @@
+# Tool safety policies
+# Block known-dangerous patterns
+
+[[rules]]
+name = "block-recursive-delete"
+description = "Prevent recursive force deletion"
+trigger = "PreToolUse"
+match = "run_shell_command(rm -rf)"
+action = "block"
+message = "Recursive force deletion blocked by Symbiont governance policy. Use targeted deletion instead."
+
+[[rules]]
+name = "block-force-push"
+description = "Prevent force push to main branches"
+trigger = "PreToolUse"
+match = "run_shell_command(git push --force)"
+action = "block"
+message = "Force push blocked by Symbiont governance policy. Use feature branches."

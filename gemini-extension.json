@@ -1,0 +1,16 @@
+{
+  "name": "symbi",
+  "version": "0.2.0",
+  "description": "Zero-trust AI agent governance for Gemini CLI. Adds ORGA runtime, Cedar policy enforcement, SchemaPin tool verification, and cryptographic audit trails to your development workflow.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "symbi": {
+      "command": "symbi",
+      "args": ["mcp"],
+      "env": {
+        "SYMBIONT_LOG_LEVEL": "warn",
+        "RUST_LOG": "warn"
+      }
+    }
+  }
+}

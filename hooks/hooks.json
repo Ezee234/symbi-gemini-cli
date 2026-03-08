@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|replace|run_shell_command|symbi__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${extensionPath}/scripts/policy-log.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file|replace|run_shell_command|symbi__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${extensionPath}/scripts/audit-log.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

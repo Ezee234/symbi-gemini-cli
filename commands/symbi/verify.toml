@@ -1,0 +1,17 @@
+[command]
+description = "Verify MCP tool schemas using SchemaPin cryptographic verification."
+
+[prompt]
+content = """
+Verify the cryptographic integrity of MCP tool schemas in this environment.
+
+1. List active MCP servers (use /mcp list output if available)
+2. For each server, use the symbi MCP server's `verify_schema` tool to check schema integrity
+3. Report verification results:
+   - Verified: signature matches publisher's key
+   - TOFU: first use, key pinned for future verification
+   - Failed: schema modified since signing -- DO NOT USE
+   - Unsigned: no signature present -- warn about risks
+
+{{args}}
+"""

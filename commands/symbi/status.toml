@@ -1,0 +1,18 @@
+[command]
+description = "Check the health and status of the Symbiont runtime, MCP server, and installed components."
+
+[prompt]
+content = """
+Check the status of the Symbiont installation and runtime:
+
+1. Run `symbi --version` to check if the binary is installed
+2. Use the symbi MCP server's `list_agents` tool to verify connectivity
+3. Check for `symbiont.toml` in the current directory
+4. Check for agent definitions in `agents/` directory
+5. Check for Cedar policies in `policies/` directory
+6. Report the status of each component
+
+If symbi is not installed, provide installation instructions:
+- From source: `cargo install symbi`
+- Via Docker: `docker pull ghcr.io/thirdkeyai/symbi:latest`
+"""

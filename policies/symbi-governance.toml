@@ -1,0 +1,18 @@
+# Symbiont Governance Policies for Gemini CLI
+# These complement Cedar policies with Gemini CLI-native enforcement
+
+[[rules]]
+name = "warn-on-unverified-mcp"
+description = "Warn when using MCP tools that haven't been verified with SchemaPin"
+trigger = "PreToolUse"
+match = "symbi__*"
+action = "warn"
+message = "This MCP tool call will be logged for audit. Ensure the tool has been verified with SchemaPin."
+
+[[rules]]
+name = "log-shell-commands"
+description = "Log all shell command executions for audit trail"
+trigger = "PreToolUse"
+match = "run_shell_command"
+action = "warn"
+message = "Shell command will be logged to .symbiont/audit/"

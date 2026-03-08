@@ -1,0 +1,15 @@
+[command]
+description = "Initialize a Symbiont-governed project with agent definitions, Cedar policies, and configuration."
+
+[prompt]
+content = """
+Initialize a Symbiont-governed project in the current directory.
+
+Create the following structure:
+- `symbiont.toml` -- runtime configuration (security tier, policy enforcement mode, SchemaPin mode)
+- `agents/assistant.dsl` -- starter agent with policy block
+- `policies/default.cedar` -- default Cedar policy (allow reads, gate writes)
+- `AGENTS.md` -- agent manifest
+
+Check if `symbiont.toml` already exists before overwriting. Report what was created and suggest next steps.
+"""
