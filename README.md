@@ -77,23 +77,49 @@ Agents are a preview feature in Gemini CLI.
 | `symbi-governor` | Governance-aware coding agent. Enforces policies and maintains audit trails. |
 | `symbi-dev` | DSL development specialist for writing agents and Cedar policies. |
 
-## Hooks
+## Governance Tiers
 
-The extension installs hooks that run automatically:
+The extension provides three progressive levels of protection, plus Gemini CLI native enforcement:
 
-- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls (does not block)
+### Tier 1: Awareness (default)
+
+All tool calls proceed. State-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl` for post-hoc review.
+
+### Tier 2: Protection
+
+Create `.symbiont/local-policy.toml` to block dangerous patterns:
+
+```toml
+[deny]
+paths = [".env", ".ssh/", ".aws/"]
+commands = ["rm -rf", "git push --force"]
+branches = ["main", "master", "production"]
+```
+
+The `policy-guard.sh` hook blocks matching operations. Built-in patterns (destructive commands, force pushes, writes to sensitive files) are always blocked regardless of config.
+
+No `symbi` binary required. Works with both symbi-gemini-cli and symbi-claude-code.
+
+### Tier 3: Governance
+
+If `symbi` is on PATH and `policies/` exists, the hook evaluates Cedar policies for formal authorization decisions.
+
+### Defense in Depth (Gemini CLI native)
+
+The extension also leverages Gemini CLI's native enforcement -- features not available in other AI assistants:
+
+- **`excludeTools`**: Manifest-level blocking of destructive commands. Enforced by Gemini CLI runtime, cannot be bypassed by hooks or prompts.
+- **Native policies** (`policies/symbi-guard.toml`): Platform-level rule matching enforced by Gemini CLI itself, independent of hook scripts.
+
+This gives the Gemini CLI extension three independent enforcement layers: manifest exclusions, native policies, and hook-based deny lists.
+
+### Hooks
+
+Hooks apply to `write_file`, `replace`, `run_shell_command`, and all `symbi__*` tools:
+
+- **PreToolUse** (`policy-guard.sh`): Blocks dangerous operations (exit code 2)
+- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls
 - **PostToolUse** (`audit-log.sh`): Logs tool usage to `.symbiont/audit/tool-usage.jsonl`
-
-Hooks apply to `write_file`, `replace`, `run_shell_command`, and all `symbi__*` MCP tools.
-
-## Native Policies
-
-Gemini CLI's built-in policy engine provides governance even without the symbi binary:
-
-- **symbi-governance.toml**: Warns on unverified MCP tool usage and shell commands
-- **tool-safety.toml**: Blocks dangerous patterns (`rm -rf`, `git push --force`)
-
-This is a Gemini CLI-exclusive feature -- Claude Code has no native policy engine.
 
 ## MCP Tools
 
@@ -165,6 +191,8 @@ Project-level configuration lives in `symbiont.toml` (created by `/symbi:init`).
 | `symbiont.toml` | Symbiont runtime configuration |
 | `AGENTS.md` | Agent manifest |
 | `.symbiont/audit/` | Audit log output |
+| `.symbiont/local-policy.toml` | Developer-defined deny rules (Tier 2) |
+| `policies/symbi-guard.toml` | Gemini CLI native policy rules |
 
 ## Comparison with Claude Code Plugin
 

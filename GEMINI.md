@@ -48,6 +48,26 @@ ORGA Gate for hard enforcement. The inner extension provides awareness.
 - `SYMBIONT_BUDGET_TOKENS` -- Token budget for execution
 - `SYMBIONT_BUDGET_TIMEOUT` -- Timeout for execution
 
+## Governance Tiers
+
+The extension provides three progressive levels of protection, plus Gemini CLI native enforcement:
+
+### Tier 1: Awareness (default)
+All tool calls proceed. State-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl` for post-hoc review.
+
+### Tier 2: Protection
+Create `.symbiont/local-policy.toml` to block dangerous patterns (path writes, shell commands, branch pushes). The `policy-guard.sh` hook blocks matching operations. Built-in patterns (destructive commands, force pushes, writes to sensitive files) are always blocked regardless of config.
+
+### Tier 3: Governance
+If `symbi` is on PATH and `policies/` exists, the hook evaluates Cedar policies for formal authorization decisions.
+
+### Defense in Depth (Gemini CLI native)
+The extension also leverages Gemini CLI's native enforcement:
+- **`excludeTools`** in `gemini-extension.json`: Manifest-level blocking of destructive commands. Enforced by Gemini CLI runtime, cannot be bypassed.
+- **Native policies** (`policies/symbi-guard.toml`): Platform-level rule matching enforced by Gemini CLI itself, independent of hook scripts.
+
+This gives three independent enforcement layers: manifest exclusions, native policies, and hook-based deny lists.
+
 ## On Session Start
 When a session begins, run `scripts/install-check.sh` to verify that `symbi` and `jq` are available. Report any missing dependencies to the user.
 

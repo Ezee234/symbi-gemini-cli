@@ -6,6 +6,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "${extensionPath}/scripts/policy-guard.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
             "command": "${extensionPath}/scripts/policy-log.sh",
             "timeout": 5
           }

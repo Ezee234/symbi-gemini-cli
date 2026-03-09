@@ -1,0 +1,26 @@
+# Symbiont governance policies for Gemini CLI native policy engine
+# These are enforced by Gemini CLI itself — no hook scripts needed.
+
+[[rules]]
+name = "block-recursive-delete"
+match = "run_shell_command(rm -rf)"
+action = "block"
+message = "Blocked by Symbiont: destructive recursive delete."
+
+[[rules]]
+name = "block-force-push"
+match = "run_shell_command(git push --force)"
+action = "block"
+message = "Blocked by Symbiont: force push. Use a feature branch and PR."
+
+[[rules]]
+name = "block-force-push-f"
+match = "run_shell_command(git push -f)"
+action = "block"
+message = "Blocked by Symbiont: force push. Use a feature branch and PR."
+
+[[rules]]
+name = "block-env-write"
+match = "write_file(.env)"
+action = "block"
+message = "Blocked by Symbiont: write to .env file. Edit manually."
